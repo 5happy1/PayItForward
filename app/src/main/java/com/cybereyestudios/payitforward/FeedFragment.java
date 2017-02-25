@@ -65,6 +65,7 @@ public class FeedFragment extends Fragment {
         for (int i = 0; i < 10; i++) {
             mDataset.add(new Deed("Example deed #" + i,
                     "This guy did something really really good. Like really good. [applause]",
+                    new User("user"+i, "User #" + i),
                     new ArrayList<User>()));
         }
 
@@ -115,6 +116,7 @@ public class FeedFragment extends Fragment {
             Deed deed = deeds.get(position);
             holder.mTitleView.setText(deed.title);
             holder.mDescriptionView.setText(deed.description);
+            holder.mAuthorView.setText(deed.author.getRealName());
         }
 
         @Override
@@ -125,11 +127,13 @@ public class FeedFragment extends Fragment {
         public class DeedHolder extends RecyclerView.ViewHolder {
             public TextView mTitleView;
             public TextView mDescriptionView;
+            public TextView mAuthorView;
 
             public DeedHolder(View v) {
                 super(v);
                 mTitleView = (TextView) v.findViewById(R.id.textView_deed_title);
                 mDescriptionView = (TextView) v.findViewById(R.id.textView_deed_description);
+                mAuthorView = (TextView) v.findViewById(R.id.textView_deed_author);
             }
         }
     }
