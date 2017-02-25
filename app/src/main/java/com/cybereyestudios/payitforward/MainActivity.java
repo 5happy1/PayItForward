@@ -55,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.tab_explore:
+                if (!(currentFrag instanceof ExploreFragment)) {
+                    frag = ExploreFragment.newInstance();
+                }
                 break;
             case R.id.tab_notifications:
                 if (!(currentFrag instanceof NotificationsFragment)) {

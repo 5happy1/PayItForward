@@ -1,15 +1,16 @@
 package com.cybereyestudios.payitforward;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -21,10 +22,10 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class FeedFragment extends Fragment {
-    private OnFragmentInteractionListener mListener;
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    protected RecyclerView mRecyclerView;
+    protected FeedAdapter mAdapter;
+    protected RecyclerView.LayoutManager mLayoutManager;
+    protected ArrayList<Deed> mDataset;
 
     public FeedFragment() {
         // Required empty public constructor
@@ -57,32 +58,19 @@ public class FeedFragment extends Fragment {
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.feed_recycler_view);
         mLayoutManager = new LinearLayoutManager(getActivity());
+        mDataset = new ArrayList<>();
+
+        // TODO: Query backend for deeds.
+        // Sample dataset (for now)
+        mDataset.add(new Deed("Example deed",
+                "This guy did something really really good. Like really good. [applause]",
+                new ArrayList<User>()));
+
+        mAdapter = new FeedAdapter(mDataset);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
         return rootView;
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        /*if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }*/
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
     }
 
     /**
@@ -100,5 +88,48 @@ public class FeedFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
+    /**
+     * Adapter for Feed RecyclerView.
+     */
+    public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.DeedHolder> {
+        private ArrayList<Deed> deeds;
 
+        public FeedAdapter(ArrayList<Deed> deeds) {
+            this.deeds = deeds;
+        }
+
+        @Override
+        public DeedHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            DeedHolder deedHolder;
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
+            View v = inflater.inflate(R.layout.card_deed, parent, false);
+            deedHolder = new DeedHolder(v);
+            return deedHolder;
+        }
+
+        @Override
+        public void onBindViewHolder(DeedHolder holder, int position) {
+            Deed deed = deeds.get(position);
+            holder.mTitleView.setText(deed.title);
+            holder.mDescriptionView.setText(deed.description);
+        }
+
+        @Override
+        public int getItemCount() {
+            return deeds.size();
+        }
+
+        public class DeedHolder extends RecyclerView.ViewHolder {
+            public TextView mTitleView;
+            public TextView mDescriptionView;
+
+            public DeedHolder(View v) {
+                super(v);
+                System.out.println("Adding deed.");
+                mTitleView = (TextView) v.findViewById(R.id.textView_deed_title);
+                mDescriptionView = (TextView) v.findViewById(R.id.textView_deed_description);
+            }
+        }
+    }
 }
