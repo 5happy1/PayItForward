@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_margin="8dp"
     android:layout_height="wrap_content">
 
     <RelativeLayout
@@ -10,12 +11,19 @@
         <TextView
             android:id="@+id/textView_deed_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:padding="8dp"
+            android:textSize="16pt"/>
 
         <TextView
             android:id="@+id/textView_deed_description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_deed_title"
+            android:padding="8dp"
+            android:textSize="8pt"/>
+
     </RelativeLayout>
 
 

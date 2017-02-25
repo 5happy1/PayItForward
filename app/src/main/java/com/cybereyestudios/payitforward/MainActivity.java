@@ -89,9 +89,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateBottomNav(MenuItem item) {
-        for (int i = 0; i < bottomNavigationView.getMenu().size(); i++) {
-            MenuItem menuItem = bottomNavigationView.getMenu().getItem(i);
-            menuItem.setChecked(menuItem.getItemId() == item.getItemId());
+
+        if (item != null) {
+//            System.out.println(item.getItemId());
+//            for (int i = 0; i < bottomNavigationView.getMenu().size(); i++) {
+//                MenuItem menuItem = bottomNavigationView.getMenu().getItem(i);
+//                System.out.println(menuItem.getItemId());
+//                System.out.println(menuItem.getItemId() == item.getItemId());
+//                menuItem.setChecked(false);
+//            }
         }
     }
 

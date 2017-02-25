@@ -62,9 +62,11 @@ public class FeedFragment extends Fragment {
 
         // TODO: Query backend for deeds.
         // Sample dataset (for now)
-        mDataset.add(new Deed("Example deed",
-                "This guy did something really really good. Like really good. [applause]",
-                new ArrayList<User>()));
+        for (int i = 0; i < 10; i++) {
+            mDataset.add(new Deed("Example deed #" + i,
+                    "This guy did something really really good. Like really good. [applause]",
+                    new ArrayList<User>()));
+        }
 
         mAdapter = new FeedAdapter(mDataset);
         mRecyclerView.setAdapter(mAdapter);
@@ -126,7 +128,6 @@ public class FeedFragment extends Fragment {
 
             public DeedHolder(View v) {
                 super(v);
-                System.out.println("Adding deed.");
                 mTitleView = (TextView) v.findViewById(R.id.textView_deed_title);
                 mDescriptionView = (TextView) v.findViewById(R.id.textView_deed_description);
             }
