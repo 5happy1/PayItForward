@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">Pay It Forward</string>
+    <string name="feed_tab">Feed</string>
+    <string name="explore_tab">Explore</string>
+    <string name="notifications_tab">Notifications</string>
+    <string name="profile_tab">Profile</string>
+
+    <string name="feed_fragment_placeholder">Feed fragment</string>
+    <string name="profile_fragment_placeholder">Profile fragment</string>
+
+    <string name="deed_tagged">Tagged: %1s</string>
     <string name="email_sign_in">Email Sign In</string>
     <string name="email_sign_up">Email Sign Up</string>
     <string name="facebook_sign_in">Facebook</string>
