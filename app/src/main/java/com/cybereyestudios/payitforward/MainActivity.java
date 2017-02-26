@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (frag != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.addToBackStack(null);
+//            ft.addToBackStack(null);
             ft.replace(R.id.fragment_container, frag, frag.getTag());
             ft.commit();
         }
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        updateBottomNav(selectedItem);
+//        updateBottomNav(selectedItem);
     }
 
     private void updateBottomNav(MenuItem item) {
