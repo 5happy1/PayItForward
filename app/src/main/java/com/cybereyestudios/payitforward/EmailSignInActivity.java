@@ -1,6 +1,7 @@
 package com.cybereyestudios.payitforward;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -64,6 +65,7 @@ public class EmailSignInActivity extends AppCompatActivity implements View.OnCli
                     if (response.isSuccessful()) {
                         progress.dismiss();
                         Snackbar.make(findViewById(android.R.id.content), response.body().getAsJsonObject().get("message").getAsString(), Snackbar.LENGTH_SHORT).show();
+                        startActivity(new Intent(EmailSignInActivity.this, MainActivity.class));
                     }
                     else {
                         System.out.println(response.toString());
