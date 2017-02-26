@@ -17,7 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".WelcomeActivity"
+            android:theme="@style/Theme.Design.NoActionBar"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".EmailSignInActivity" />
         <activity android:name=".EmailSignUpActivity"/>

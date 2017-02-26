@@ -7,7 +7,19 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.cybereyestudios.payitforward.WelcomeActivity">
+    tools:context="com.cybereyestudios.payitforward.WelcomeActivity"
+    android:background="@drawable/picnic">
+
+    <TextView
+        android:id="@+id/title"
+        android:text="@string/app_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:paddingTop="20dp"
+        android:textColor="#FF212121"
+        android:textAlignment="center"
+        android:textSize="24pt"/>
 
     <View
         android:id="@+id/spacerHorizontalCenter"
@@ -16,39 +28,42 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/buttonEmailSignIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@id/spacerHorizontalCenter"
-        android:layout_toStartOf="@id/spacerHorizontalCenter"
-        android:text="@string/email_sign_in" />
-
-    <Button
-        android:id="@+id/buttonEmailSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/buttonEmailSignIn"
-        android:layout_toEndOf="@id/buttonEmailSignIn"
-        android:layout_toRightOf="@id/buttonEmailSignIn"
-        android:text="@string/email_sign_up" />
-
-    <Button
         android:id="@+id/buttonFacebookSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@id/buttonEmailSignIn"
-        android:layout_alignRight="@id/buttonEmailSignIn"
-        android:layout_below="@id/buttonEmailSignIn"
-        android:text="@string/facebook_sign_in" />
+        android:text="@string/facebook_sign_in"
+        android:layout_marginBottom="7dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/spacerHorizontalCenter"
+        android:layout_toStartOf="@+id/spacerHorizontalCenter" />
 
     <Button
         android:id="@+id/buttonGoogleSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/buttonEmailSignUp"
-        android:layout_alignStart="@id/buttonEmailSignUp"
-        android:layout_below="@id/buttonEmailSignUp"
-        android:text="@string/google_sign_in" />
+        android:text="@string/google_sign_in"
+        android:layout_alignBaseline="@+id/buttonFacebookSignIn"
+        android:layout_alignBottom="@+id/buttonFacebookSignIn"
+        android:layout_toRightOf="@+id/buttonFacebookSignIn"
+        android:layout_toEndOf="@+id/buttonFacebookSignIn" />
+
+    <Button
+        android:id="@+id/buttonEmailSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email_sign_up"
+        android:layout_above="@+id/buttonGoogleSignIn"
+        android:layout_toRightOf="@+id/buttonFacebookSignIn"
+        android:layout_toEndOf="@+id/buttonFacebookSignIn" />
+
+    <Button
+        android:id="@+id/buttonEmailSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email_sign_in"
+        android:layout_alignBaseline="@+id/buttonEmailSignUp"
+        android:layout_alignBottom="@+id/buttonEmailSignUp"
+        android:layout_alignRight="@+id/spacerHorizontalCenter"
+        android:layout_alignEnd="@+id/spacerHorizontalCenter" />
 
 </RelativeLayout>
