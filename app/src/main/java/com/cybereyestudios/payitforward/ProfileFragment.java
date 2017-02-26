@@ -4,21 +4,28 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 /**
  * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ProfileFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
  * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
-    private OnFragmentInteractionListener mListener;
+    CurrentUser currentUser;
+    TextView profileName, profileEmail;
+    RecyclerView userDeedsView;
+    FeedAdapter deedsViewAdapter;
+    RecyclerView.LayoutManager deedsViewLayoutManager;
+    ArrayList<Deed> userDeeds;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -47,45 +54,45 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
-    }
+        View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+        currentUser = new CurrentUser("johnsmith12", "John Smith", "johnsmith@example.com");
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+        // Populate text views
+        profileName = (TextView) rootView.findViewById(R.id.textView_profile_name);
+        profileName.setText(currentUser.getRealName());
+
+        profileEmail = (TextView) rootView.findViewById(R.id.textView_profile_email);
+        profileEmail.setText(currentUser.getEmail());
+
+        userDeedsView = (RecyclerView) rootView.findViewById(R.id.profile_recycler_view);
+        deedsViewLayoutManager = new LinearLayoutManager(getActivity());
+        userDeedsView.setLayoutManager(deedsViewLayoutManager);
+
+        userDeeds = new ArrayList<>();
+
+        for (int i = 0; i < 50; i++) {
+            userDeeds.add(new Deed("Pet " + (int)(Math.random() * 30) + " cats",
+                    "Today I pet a lot of cats! They were so cute!!!11!",
+                    new User("johnsmith12", "John Smith"), new ArrayList<User>()));
         }
+
+        deedsViewAdapter = new FeedAdapter(userDeeds);
+        userDeedsView.setAdapter(deedsViewAdapter);
+
+        return rootView;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        /*if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }*/
-    }
+    public class CurrentUser extends User {
+        String email;
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
+        CurrentUser(String username, String realName, String email) {
+            this.username = username;
+            this.realName = realName;
+            this.email = email;
+        }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        public String getEmail() {
+            return email;
+        }
     }
 }
