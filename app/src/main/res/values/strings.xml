@@ -9,4 +9,18 @@
     <string name="profile_fragment_placeholder">Profile fragment</string>
 
     <string name="deed_tagged">Tagged: %1s</string>
+    <string name="email_sign_in">Email Sign In</string>
+    <string name="email_sign_up">Email Sign Up</string>
+    <string name="facebook_sign_in">Facebook</string>
+    <string name="google_sign_in">Google</string>
+    <string name="not_implemented_yet">Not implemented yet.</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="connection_error">Connection error.</string>
+    <string name="generic_error">An error occurred. Please try again later.</string>
+    <string name="signing_up">Signing up...</string>
+    <string name="sign_in">Sign In</string>
+    <string name="signing_in">Signing in...</string>
 </resources>

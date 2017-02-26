@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cybereyestudios.payitforward">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +19,8 @@
         </activity>
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".EmailLoginActivity" />
+        <activity android:name=".EmailSignInActivity" />
+        <activity android:name=".EmailSignUpActivity"/>
     </application>
 
 </manifest>
