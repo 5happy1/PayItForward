@@ -15,9 +15,6 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FeedFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
  * Use the {@link FeedFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
@@ -76,65 +73,5 @@ public class FeedFragment extends Fragment {
         return rootView;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 
-    /**
-     * Adapter for Feed RecyclerView.
-     */
-    public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.DeedHolder> {
-        private ArrayList<Deed> deeds;
-
-        public FeedAdapter(ArrayList<Deed> deeds) {
-            this.deeds = deeds;
-        }
-
-        @Override
-        public DeedHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            DeedHolder deedHolder;
-            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-
-            View v = inflater.inflate(R.layout.card_deed, parent, false);
-            deedHolder = new DeedHolder(v);
-            return deedHolder;
-        }
-
-        @Override
-        public void onBindViewHolder(DeedHolder holder, int position) {
-            Deed deed = deeds.get(position);
-            holder.mTitleView.setText(deed.title);
-            holder.mDescriptionView.setText(deed.description);
-            holder.mAuthorView.setText(deed.author.getRealName());
-        }
-
-        @Override
-        public int getItemCount() {
-            return deeds.size();
-        }
-
-        public class DeedHolder extends RecyclerView.ViewHolder {
-            public TextView mTitleView;
-            public TextView mDescriptionView;
-            public TextView mAuthorView;
-
-            public DeedHolder(View v) {
-                super(v);
-                mTitleView = (TextView) v.findViewById(R.id.textView_deed_title);
-                mDescriptionView = (TextView) v.findViewById(R.id.textView_deed_description);
-                mAuthorView = (TextView) v.findViewById(R.id.textView_deed_author);
-            }
-        }
-    }
 }
