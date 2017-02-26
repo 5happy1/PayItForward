@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (selectedItem.getItemId() != bottomNavigationView.getMenu().getItem(0).getItemId()){
+        if (selectedItem != null && selectedItem.getItemId() != bottomNavigationView.getMenu().getItem(0).getItemId()){
             selectFragment(bottomNavigationView.getMenu().getItem(0));
         }
 //        updateBottomNav(selectedItem);
