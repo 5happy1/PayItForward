@@ -37,10 +37,10 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(new Intent(this, EmailSignUpActivity.class));
         }
         else if (v.getId() == R.id.buttonFacebookSignIn) {
-            Snackbar.make(findViewById(android.R.id.content), getString(R.string.not_implemented_yet), Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), getString(R.string.coming_soon), Snackbar.LENGTH_SHORT).show();
         }
         else if (v.getId() == R.id.buttonGoogleSignIn) {
-            Snackbar.make(findViewById(android.R.id.content), getString(R.string.not_implemented_yet), Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), getString(R.string.coming_soon), Snackbar.LENGTH_SHORT).show();
         }
     }
 }
