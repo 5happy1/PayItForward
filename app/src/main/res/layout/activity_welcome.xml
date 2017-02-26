@@ -7,33 +7,48 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.cybereyestudios.payitforward.WelcomeActivity"
-    android:onClick="loginWithEmail">
+    tools:context="com.cybereyestudios.payitforward.WelcomeActivity">
+
+    <View
+        android:id="@+id/spacerHorizontalCenter"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true" />
 
     <Button
+        android:id="@+id/buttonEmailSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Facebook"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="52dp" />
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/spacerHorizontalCenter"
+        android:layout_toStartOf="@id/spacerHorizontalCenter"
+        android:text="@string/email_sign_in" />
 
     <Button
+        android:id="@+id/buttonEmailSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"
-        android:id="@+id/buttonEmail"
-        android:layout_alignBottom="@+id/button"
-        android:layout_toLeftOf="@+id/button"
-        android:layout_toStartOf="@+id/button" />
+        android:layout_alignTop="@id/buttonEmailSignIn"
+        android:layout_toEndOf="@id/buttonEmailSignIn"
+        android:layout_toRightOf="@id/buttonEmailSignIn"
+        android:text="@string/email_sign_up" />
 
     <Button
+        android:id="@+id/buttonFacebookSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Google"
-        android:id="@+id/button3"
-        android:layout_alignTop="@+id/button"
-        android:layout_toRightOf="@+id/button"
-        android:layout_toEndOf="@+id/button" />
+        android:layout_alignEnd="@id/buttonEmailSignIn"
+        android:layout_alignRight="@id/buttonEmailSignIn"
+        android:layout_below="@id/buttonEmailSignIn"
+        android:text="@string/facebook_sign_in" />
+
+    <Button
+        android:id="@+id/buttonGoogleSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/buttonEmailSignUp"
+        android:layout_alignStart="@id/buttonEmailSignUp"
+        android:layout_below="@id/buttonEmailSignUp"
+        android:text="@string/google_sign_in" />
+
 </RelativeLayout>
