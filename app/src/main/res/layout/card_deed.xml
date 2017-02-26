@@ -17,11 +17,19 @@
             android:padding="8dp"
             android:textSize="16pt"/>
 
+        <ImageView
+            android:id="@+id/imageView_deed_image"
+            android:src="@drawable/petthecat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            android:layout_below="@id/textView_deed_title"/>
+
         <TextView
             android:id="@+id/textView_deed_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView_deed_title"
+            android:layout_below="@+id/imageView_deed_image"
             android:textAlignment="viewEnd"
             android:gravity="end"
             android:paddingLeft="8dp"
@@ -29,7 +37,6 @@
             android:textSize="10pt"
             android:fontFamily="sans-serif-medium"
             />
-
 
         <TextView
             android:id="@+id/textView_deed_description"
@@ -39,6 +46,13 @@
             android:padding="8dp"
             android:textSize="6pt"/>
 
+        <TextView
+            android:id="@+id/textView_deed_tagged"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView_deed_description"
+            android:padding="8dp"
+            android:textStyle="italic"/>
     </RelativeLayout>
 
 

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 /**
@@ -73,10 +74,10 @@ public class ProfileFragment extends Fragment {
         for (int i = 0; i < 50; i++) {
             userDeeds.add(new Deed("Pet " + (int)(Math.random() * 30) + " cats",
                     "Today I pet a lot of cats! They were so cute!!!11!",
-                    new User("johnsmith12", "John Smith"), new ArrayList<User>()));
+                    new User("johnsmith12", "John Smith"), new ArrayList<User>(Arrays.asList(new User("janesmith34", "Jane Smith")))));
         }
 
-        deedsViewAdapter = new FeedAdapter(userDeeds);
+        deedsViewAdapter = new FeedAdapter(userDeeds, getContext());
         userDeedsView.setAdapter(deedsViewAdapter);
 
         return rootView;

@@ -1,6 +1,7 @@
 package com.cybereyestudios.payitforward;
 
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +15,12 @@ import java.util.ArrayList;
  */
 public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.DeedHolder> {
     private ArrayList<Deed> deeds;
+    private Context context;
 
-    public FeedAdapter(ArrayList<Deed> deeds) {
+    public FeedAdapter(ArrayList<Deed> deeds, Context context) {
         this.deeds = deeds;
+        this.context = context;
+
     }
 
     @Override
@@ -35,6 +39,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.DeedHolder> {
         holder.mTitleView.setText(deed.title);
         holder.mDescriptionView.setText(deed.description);
         holder.mAuthorView.setText(deed.author.getRealName());
+        holder.mTaggedView.setText(String.format(context.getString(R.string.deed_tagged), deed.taggedUsers.get(0).getRealName()));
     }
 
     @Override
@@ -46,12 +51,14 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.DeedHolder> {
         public TextView mTitleView;
         public TextView mDescriptionView;
         public TextView mAuthorView;
+        public TextView mTaggedView;
 
         public DeedHolder(View v) {
             super(v);
             mTitleView = (TextView) v.findViewById(R.id.textView_deed_title);
             mDescriptionView = (TextView) v.findViewById(R.id.textView_deed_description);
             mAuthorView = (TextView) v.findViewById(R.id.textView_deed_author);
+            mTaggedView = (TextView) v.findViewById(R.id.textView_deed_tagged);
         }
     }
 }

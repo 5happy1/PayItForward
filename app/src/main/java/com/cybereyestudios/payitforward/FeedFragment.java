@@ -1,6 +1,5 @@
 package com.cybereyestudios.payitforward;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,9 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 /**
@@ -52,6 +51,7 @@ public class FeedFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_feed, container, false);
+        getString(R.string.deed_tagged);
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.feed_recycler_view);
         mLayoutManager = new LinearLayoutManager(getActivity());
@@ -61,12 +61,12 @@ public class FeedFragment extends Fragment {
         // Sample dataset (for now)
         for (int i = 0; i < 10; i++) {
             mDataset.add(new Deed("Example deed #" + i,
-                    "This guy did something really really good. Like really good. [applause]",
+                    "I did something really good and I want recognition for it. Please clap.",
                     new User("user"+i, "User #" + i),
-                    new ArrayList<User>()));
+                    new ArrayList<User>(Arrays.asList(new User("user" + (i + 10), "User #" + (i + 10))))));
         }
 
-        mAdapter = new FeedAdapter(mDataset);
+        mAdapter = new FeedAdapter(mDataset, getContext());
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
